@@ -4,7 +4,243 @@
 	(generator_version "10.0")
 	(uuid "953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f")
 	(paper "A4")
+	(title_block
+		(title "STM32 Quadcopter Flight Controller")
+		(company "Brody Barrett")
+		(comment 1 "Rev A")
+		(comment 2 "github.com/barrettbrody06/stm32-quadcopter-fc")
+	)
 	(lib_symbols)
+	(sheet
+		(at 190.5 16.51)
+		(size 87.63 62.23)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "086f3ddb-0419-45e6-8249-57e190175bfb")
+		(property "Sheetname" "Radio"
+			(at 190.5 15.7984 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "radio.kicad_sch"
+			(at 190.5 79.3246 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc-board"
+				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 97.79 16.51)
+		(size 86.36 109.22)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "27b5d84d-d87f-4260-bcb2-6a1c312b4dc0")
+		(property "Sheetname" "MCU"
+			(at 97.79 15.7984 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 97.79 126.3146 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc-board"
+				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 15.24 16.51)
+		(size 74.93 40.64)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "575e6a72-7ef9-47fb-9fde-91b76de79b81")
+		(property "Sheetname" "Power"
+			(at 15.24 15.7984 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 15.24 57.7346 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc-board"
+				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 83.82 132.08)
+		(size 90.17 63.5)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "620056f6-4d7c-43ff-aa97-653995edc139")
+		(property "Sheetname" "Motors"
+			(at 83.82 131.3684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "motors.kicad_sch"
+			(at 83.82 196.1646 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc-board"
+				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 15.24 68.58)
+		(size 74.93 57.15)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f8c467fd-fb50-4537-bf75-4a08c491bc39")
+		(property "Sheetname" "IMU"
+			(at 15.24 67.8684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "imu.kicad_sch"
+			(at 15.24 126.3146 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc-board"
+				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
+					(page "4")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
