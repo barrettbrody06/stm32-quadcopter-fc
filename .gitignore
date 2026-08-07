@@ -1,0 +1,37 @@
+# VS Code
+.history/
+.vscode/
+
+# KiCad - user/local state
+*.kicad_prl
+fp-info-cache
+
+# KiCad - backups and autosaves
+*-backups/
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.kicad_pro-bak
+_autosave-*
+*.lck
+~*.lck
+*.bak
+*.bck
+*.tmp
+*.000
+
+# KiCad - generated outputs
+*.net
+*.xml
+*.drl
+*.gbr
+*.gbrjob
+gerbers/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
