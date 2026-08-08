@@ -39,6 +39,19 @@ System: 3S LiPo (9.0V min, 12.6V max), USB-C bench power
   the 5.5V-rated variants are too close. 250mV dropout, 600mA
   vs ~150mA load. SOT-23-5, hand-solderable.
 
+### L1 — Buck inductor
+- **Part:** PNLS5040-150M, 15uH
+- **LCSC:** C2849502 (DMBJ, Extended)
+- **Package:** SMD 5x5mm, magnetic shielded, ±20%
+- **Calculated:** L = Vout(Vin,max - Vout) / (Vin,max x fsw x Iout x Kind)
+  = 5(12.6-5) / (12.6 x 570k x 1A x 0.3) = 17.6uH -> 15uH standard value
+- **Ripple check:** dI = 353mA = 35% of 1A design current (target 20-40%)
+- **Peak current:** 1 + 353m/2 = 1.18A, vs 2A rating = 1.7x margin
+- **Why 1A design current, not 200mA actual:** yields a sensible standard
+  value and leaves headroom for GPS/LEDs later. Light load just enters
+  discontinuous mode, which is harmless.
+- **Why shielded:** unshielded radiates at 570kHz directly into the IMU.
+- **DCR:** 80mΩ, lowest of the candidates. 80mW at 1A, ~3mW at real load.
 ---
 
 ## MCU
