@@ -1,4 +1,6 @@
-# Power Sheet BOM — STM32 Flight Controller (Rev A)
+# BOM — STM32 Flight Controller (Rev A)
+
+## Power sheet
 
 System: 3S LiPo (9.0V min, 11.1V nominal, 12.6V max) + USB-C 5V bench power
 5V rail load: ~200mA | 3.3V rail load: ~150mA
@@ -64,3 +66,84 @@ resistors. Without these a USB-C source supplies no power at all.
 
 **Slow start:** Tss = Css(nF) x Vref / Iss = 10 x 0.8 / 2 = 4ms.
 Datasheet 7.3.5 requires 1-10ms, cap must not exceed 27nF.
+
+### Power sheet parts still missing from this BOM
+
+Present in `power.kicad_sch` but not costed above. Values read from the
+schematic; LCSC numbers are suggestions, confirm before ordering.
+
+| Ref | Value | Suggested LCSC | Tier | Package | Notes |
+|-----|-------|----------------|------|---------|-------|
+| R6 | 10k 1% | C25804 | Basic | 0603 | VBAT sense divider, high side |
+| R7 | 1k 1% | C21190 | Basic | 0603 | VBAT sense divider, low side |
+| C11 | 1uF 50V | C15849 | Basic | 0603 | (confirm function) |
+| C12 | 1uF 50V | C15849 | Basic | 0603 | (confirm function) |
+| C13 | 100nF 50V X7R | C14663 | Basic | 0603 | (confirm function) |
+
+**VBAT sense divider ratio:** 10k/1k puts 12.6 V at 1.15 V on PA0 — only 35%
+of the 3.3 V ADC range. 10k/3.3k would reach 3.11 V at full charge for ~3x the
+resolution, still with headroom. Source impedance either way is well under the
+STM32F4 ADC limit.
+
+## MCU sheet
+
+STM32F411CEU6, UFQFPN-48. 3.3 V only. HSE crystal required because USB OTG FS
+cannot meet USB timing off the HSI.
+
+| Ref | Value / Part | LCSC | Tier | Package | Notes |
+|-----|-------------|------|------|---------|-------|
+| U3 | STM32F411CEU6 | C60420 | Ext | UFQFPN-48 | Exposed pad tied to GND |
+| Y1 | X50328MSB2GI 8MHz | C115962 | Ext | SMD5032-2P | CL 20pF, ESR 80R, +/-10ppm |
+| FB1 | GZ1608D601TF | C1002 | Basic | 0603 | 600R@100MHz, 200mA, 450mR — VDDA filter |
+| C20 | 100nF 50V X7R | C14663 | Basic | 0603 | VDD pin 24 |
+| C21 | 100nF 50V X7R | C14663 | Basic | 0603 | VDD pin 36 |
+| C22 | 100nF 50V X7R | C14663 | Basic | 0603 | VDD pin 48 |
+| C23 | 4.7uF 16V X5R | C19666 | Basic | 0603 | VDD bulk (AN4488 min; C19702 10uF is the typ) |
+| C24 | 100nF 50V X7R | C14663 | Basic | 0603 | VBAT decoupling |
+| C25 | 100nF 50V X7R | C14663 | Basic | 0603 | VDDA |
+| C26 | 1uF 50V | C15849 | Basic | 0603 | VDDA |
+| C27 | 4.7uF 16V X5R | C19666 | Basic | 0603 | VCAP1 — see note |
+| C28 | 100nF 50V X7R | C14663 | Basic | 0603 | NRST |
+| C29 | 27pF 50V C0G | C1656 | Basic | 0603 | HSE load cap |
+| C30 | 27pF 50V C0G | C1656 | Basic | 0603 | HSE load cap |
+| R20 | 10k 1% | C98220 | Ext | 0603 | BOOT0 pulldown (C25804 is the Basic-tier equivalent) |
+| R21 | 10k 1% | C98220 | Ext | 0603 | BOOT1/PB2 pulldown |
+| J2 | 1x04 header 2.54mm | — | THT | — | SWD: 1 SWDIO, 2 SWCLK, 3 +3V3, 4 GND |
+| J3 | 1x02 header 2.54mm | — | THT | — | BOOT0 jumper: 1 +3V3, 2 BOOT0 |
+
+### Design notes
+
+**VCAP1 is 4.7 uF, not 2.2 uF.** AN4488 section on the internal regulator:
+"1 x 4.7 uF low ESR < 1 ohm ceramic capacitor if only VCAP1 is provided on some
+packages." The 2.2 uF figure applies to packages that expose two VCAP pins.
+UFQFPN-48 has only VCAP1 (pin 22), so it takes the single 4.7 uF part.
+
+**VBAT (pin 1) must not float.** AN4488: with no backup battery, tie VBAT to
+VDD through a 100 nF decoupling cap. A floating VBAT stops the device booting.
+This was missing from the original MCU checklist.
+
+**BOOT1 (PB2) needs its own pulldown.** STM32F4 boot select uses BOOT0 *and*
+BOOT1. BOOT0=0 boots main flash regardless of BOOT1, but entering the USB DFU
+bootloader needs BOOT0=1 *and* BOOT1=0. PB2 resets to floating input, so
+without R21 the DFU jumper on J3 is not guaranteed to work. PB2 is unused in
+the pin plan, so the pulldown costs nothing.
+
+**Crystal load capacitors — AN2867.** CL1 = CL2 = 2 x (CL - Cs).
+With CL = 20 pF and an estimated stray Cs = 5 pF: 2 x (20 - 5) = 30 pF, so
+27 pF is the nearest E24 value (33 pF is the other option). 27 pF gives an
+effective CL of 13.5 + 5 = 18.5 pF, a few ppm fast — inside the +/-10 ppm part
+tolerance. Cs = 5 pF is an estimate; measure on the real board if the frequency
+matters.
+
+**Crystal gain margin — AN2867.** gm_crit = 4 x ESR x (2*pi*F)^2 x (C0 + CL)^2.
+At ESR 80 R, F 8 MHz, C0+CL 25 pF: gm_crit = 0.51 mA/V. The STM32F4 HSE
+oscillator has gm_min = 5 mA/V, so gain margin = 9.9. ST requires > 5.
+For comparison the 3225-package alternative (C2682774, ESR 180 R) gives a
+margin of ~4.4 and was rejected.
+
+**Ferrite on VDDA, not a plain connection.** AN4488 makes the ferrite optional,
+but the ADC is reading battery voltage on a board that also carries a 570 kHz
+switcher, so the filter is worth one part.
+
+**Decoupling count.** AN4488: one 100 nF per VDD pin plus one bulk 4.7-10 uF
+for the package. Three VDD pins on UFQFPN-48, hence C20-C22 plus C23.
