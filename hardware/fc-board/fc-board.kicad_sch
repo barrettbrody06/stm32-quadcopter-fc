@@ -443,6 +443,66 @@
 				(justify left top)
 			)
 		)
+		(pin "+3V3" input
+			(at 15.24 71.12 180)
+			(uuid "1b1ba9b3-1c1b-40ee-a939-ec15224b8977")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_SCK" bidirectional
+			(at 15.24 73.66 180)
+			(uuid "c33debb1-095e-4273-afda-a6c5bc1da74c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_MISO" bidirectional
+			(at 15.24 76.2 180)
+			(uuid "2c3b9628-79ac-44dd-a08e-398e6c45c743")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_MOSI" bidirectional
+			(at 15.24 78.74 180)
+			(uuid "73af1769-f242-4143-ad9e-bfceb6ca6e1e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_CS" bidirectional
+			(at 15.24 81.28 180)
+			(uuid "b31df12a-f83e-444f-a288-5f58bf287d34")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_INT" bidirectional
+			(at 15.24 83.82 180)
+			(uuid "7bda9658-076a-4d01-af95-da56ebc53d74")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "fc-board"
 				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
@@ -610,6 +670,226 @@
 			(justify left bottom)
 		)
 		(uuid "d64dd20c-c2e9-4821-ab14-bd36af338466")
+	)
+	(wire
+		(pts
+			(xy 15.24 71.12) (xy 12.7 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22efedf9-e4a5-4b09-a06e-108b2fa574b1")
+	)
+	(label "+3V3"
+		(at 12.7 71.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e5c272d9-f691-429c-aca3-7fe43cfe96ea")
+	)
+	(wire
+		(pts
+			(xy 15.24 73.66) (xy 12.7 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42cb744f-0f74-4854-a793-2194c6b74f87")
+	)
+	(label "IMU_SCK"
+		(at 12.7 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d1bcc415-275b-4bfb-aa7f-7888a11af3de")
+	)
+	(wire
+		(pts
+			(xy 15.24 76.2) (xy 12.7 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6797f358-7daf-4aa7-a884-98e1621885cd")
+	)
+	(label "IMU_MISO"
+		(at 12.7 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b76a8c85-5832-46de-a99b-d983814f22eb")
+	)
+	(wire
+		(pts
+			(xy 15.24 78.74) (xy 12.7 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "618caafe-c724-4044-a208-c888b98a333f")
+	)
+	(label "IMU_MOSI"
+		(at 12.7 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6f459181-b114-4358-a92b-e474eb0fc461")
+	)
+	(wire
+		(pts
+			(xy 15.24 81.28) (xy 12.7 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "124d9612-1c7d-42cb-af0c-da867a918c2c")
+	)
+	(label "IMU_CS"
+		(at 12.7 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "91b4d9b8-8233-4e15-a626-bae6e8dfb338")
+	)
+	(wire
+		(pts
+			(xy 15.24 83.82) (xy 12.7 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "490b7f47-48b3-4349-ad74-d3fb7534e473")
+	)
+	(label "IMU_INT"
+		(at 12.7 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a9849d3a-1611-422e-af4d-fd39dd7d655c")
+	)
+	(wire
+		(pts
+			(xy 184.15 92.71) (xy 191.77 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "224425e3-9e23-4054-ad08-6169ade2fb8d")
+	)
+	(label "IMU_SCK"
+		(at 191.77 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cc1c9e40-9d0f-471c-ad45-61af904a1edd")
+	)
+	(wire
+		(pts
+			(xy 184.15 95.25) (xy 191.77 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e1b24d3-b73d-48f7-aac4-8fe93367d3d2")
+	)
+	(label "IMU_MISO"
+		(at 191.77 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2242504d-3680-450c-ab58-176558823023")
+	)
+	(wire
+		(pts
+			(xy 184.15 97.79) (xy 191.77 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f1840bf-76b9-408f-a531-6942c34dbf2d")
+	)
+	(label "IMU_MOSI"
+		(at 191.77 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "49a083ac-9ad7-4b5b-a0db-17983799f65d")
+	)
+	(wire
+		(pts
+			(xy 184.15 100.33) (xy 191.77 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a63e5563-2f37-464d-ae1f-224bdca9aace")
+	)
+	(label "IMU_CS"
+		(at 191.77 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "46dd084a-72ca-4fca-ae51-37755469d983")
+	)
+	(wire
+		(pts
+			(xy 184.15 102.87) (xy 191.77 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e83d146-1f71-42cc-a45a-383c55763b5c")
+	)
+	(label "IMU_INT"
+		(at 191.77 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "41a5be94-d461-409d-a7ff-2112e7fc788a")
 	)
 	(sheet_instances
 		(path "/"

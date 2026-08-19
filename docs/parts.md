@@ -147,3 +147,56 @@ switcher, so the filter is worth one part.
 
 **Decoupling count.** AN4488: one 100 nF per VDD pin plus one bulk 4.7-10 uF
 for the package. Three VDD pins on UFQFPN-48, hence C20-C22 plus C23.
+
+## IMU sheet
+
+TDK InvenSense ICM-42605, LGA-14 (2.5 x 3.0 mm), 6-axis. 4-wire SPI on SPI1.
+Same register map and family pinout as the ICM-42688-P, so the driver ports
+directly if the part is ever upgraded for lower noise.
+
+| Ref | Value / Part | LCSC | Tier | Package | Notes |
+|-----|-------------|------|------|---------|-------|
+| U4 | ICM-42605 | C2655099 | Ext | LGA-14 2.5x3.0 | 3.8 mdps/rtHz, 24MHz SPI |
+| C31 | 100nF 50V X7R | C14663 | Basic | 0603 | VDD (TDK ref circuit C1) |
+| C32 | 2.2uF 16V X7R | C23630 | Basic | 0603 | VDD (TDK ref circuit C2) |
+| C33 | 10nF 50V X7R | C57112 | Basic | 0603 | VDDIO (TDK ref circuit C3) |
+| R22 | 10k 1% | C98220 | Ext | 0603 | AP_CS pull-up to +3V3 |
+
+### Pin map (4-wire SPI)
+
+| Pin | Name | Net | STM32 |
+|-----|------|-----|-------|
+| 1 | AP_SDO | IMU_MISO | PA6 (SPI1_MISO) |
+| 4 | INT1 | IMU_INT | PA1 (EXTI1) |
+| 5 | VDDIO | +3V3 | — |
+| 6 | GND | GND | — |
+| 7 | RESV | GND | — |
+| 8 | VDD | +3V3 | — |
+| 12 | AP_CS | IMU_CS | PA4 |
+| 13 | AP_SCLK | IMU_SCK | PA5 (SPI1_SCK) |
+| 14 | AP_SDI | IMU_MOSI | PA7 (SPI1_MOSI) |
+| 2, 3, 10, 11 | RESV | no-connect | — |
+| 9 | INT2 / FSYNC | no-connect | — |
+
+### Design notes
+
+**Decoupling is TDK's reference circuit, not a guess.** 0.1 uF + 2.2 uF on VDD,
+10 nF on VDDIO. Note the 2.2 uF — not the 4.7 uF that habit suggests.
+
+**Pin 7 RESV must go to GND.** The datasheet lists pins 2, 3, 10 and 11 as
+"No Connect or Connect to GND", but pin 7 is specifically "Connect to GND".
+2/3/10/11 are left as no-connects to keep escape routing sane on a 0.5 mm
+pitch LGA.
+
+**INT2/FSYNC (pin 9) is a no-connect, deliberately not grounded.** The
+datasheet says ground it when FSYNC is unused, but that assumes the pin is
+configured as an input. If firmware ever sets INT2 as a push-pull output and
+drives it high, a hard ground is a short through the output driver. NC costs
+nothing and removes that failure mode.
+
+**10k pull-up on AP_CS.** STM32 GPIOs are high-Z during reset and before
+firmware configures them, so CS floats and the IMU can latch onto noise as a
+transaction. The pull-up holds it deasserted until the MCU takes over.
+
+**VDD and VDDIO both on +3V3.** Both accept 1.71-3.6 V, and there is no
+level-shifting requirement since the STM32 is a 3.3 V part.
