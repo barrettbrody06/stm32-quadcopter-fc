@@ -200,3 +200,79 @@ transaction. The pull-up holds it deasserted until the MCU takes over.
 
 **VDD and VDDIO both on +3V3.** Both accept 1.71-3.6 V, and there is no
 level-shifting requirement since the STM32 is a 3.3 V part.
+
+## Motors sheet
+
+Signal-only interface. Battery current does not pass through this board — the
+ESCs tap the pack directly, so J4 carries the four DShot/PWM lines plus a
+ground reference and nothing else.
+
+| Ref | Value / Part | LCSC | Tier | Package | Notes |
+|-----|-------------|------|------|---------|-------|
+| J4 | 1x05 header 2.54mm | — | THT | — | 1 M1, 2 M2, 3 M3, 4 M4, 5 GND |
+| R23 | 33R 1% | C23140 | Basic | 0603 | MOTOR1 series damping |
+| R24 | 33R 1% | C23140 | Basic | 0603 | MOTOR2 series damping |
+| R25 | 33R 1% | C23140 | Basic | 0603 | MOTOR3 series damping |
+| R26 | 33R 1% | C23140 | Basic | 0603 | MOTOR4 series damping |
+
+### Design notes
+
+**2.54 mm header, not a JST-SH 4-in-1 connector.** A 1.0 mm 8-pin JST-SH is
+what production flight controllers use and it looks tidier, but this is a first
+board that has to be brought up on a bench. 0.1 in pins take a scope probe or
+a logic analyser clip directly, which matters far more during bring-up than the
+connector looking professional. It also works with four individual ESCs or a
+4-in-1, rather than committing to one.
+
+**33R in series on each motor line.** DShot600 has ~1.67 us bit periods and the
+ESC signal wires are unterminated stubs, so edges ring. 33R at the source
+damps the reflection without meaningfully slowing the edge (33R into a typical
+20 pF ESC input is a sub-nanosecond time constant). Place them close to the
+STM32, not close to J4 — series termination only works at the driver end.
+
+**GND on pin 5 is a signal reference, not a return path.** Motor current
+returns through the ESC's own battery leads. This pin only gives the DShot
+signals a reference; keep it a thin trace and do not treat it as a power
+ground.
+
+## Radio sheet
+
+ExpressLRS receiver over CRSF on USART1.
+
+| Ref | Value / Part | LCSC | Tier | Package | Notes |
+|-----|-------------|------|------|---------|-------|
+| J5 | 1x04 header 2.54mm | — | THT | — | 1 +5V, 2 GND, 3 RX_RX, 4 RX_TX |
+| C34 | 100nF 50V X7R | C14663 | Basic | 0603 | 5V decoupling at connector |
+| C35 | 10uF 10V X5R | C19702 | Basic | 0603 | 5V bulk at connector |
+
+### Design notes
+
+**CRSF, not SBUS — and that choice is what avoids a part.** SBUS is inverted
+UART, and the STM32F4 has no built-in receiver inversion (F7/H7 do), so an
+SBUS-capable board needs an external inverter transistor on the RX line.
+CRSF is plain non-inverted UART at 420 kbaud, so USART1 connects straight
+through with no extra parts and no extra failure mode.
+
+**Receiver runs from +5V, signals are 3.3 V.** ExpressLRS receivers take 5 V on
+VCC and talk 3.3 V logic, which matches the STM32 directly. PA10 is 5 V
+tolerant regardless.
+
+**Bulk cap at the connector.** The receiver sits at the end of a cable and
+draws current in bursts when its radio transmits telemetry. 10 uF + 100 nF at
+J5 keeps those bursts off the shared 5 V rail rather than letting them modulate
+it.
+
+**Watch the 5 V budget.** The power sheet is specced for ~200 mA on the 5 V
+rail; an ELRS receiver takes roughly 50-100 mA with peaks on transmit. It fits,
+but there is not much room left for anything else on 5 V.
+
+## Open hardware questions
+
+- **`VBATT` is exported from the power sheet but nothing consumes it.** With
+  the ESCs tapping the pack directly, no other sheet needs battery voltage.
+  Either delete the `VBATT` hierarchical label on `power.kicad_sch`, or keep it
+  as a deliberate export and accept one standing ERC warning.
+- **C11 / C12 / C13** on the power sheet (1uF, 1uF, 100nF) are still
+  undocumented and were never costed.
+- **VBAT sense divider** is 10k/1k, which uses only 35% of the ADC range at
+  12.6 V. 10k/3.3k would give ~3x the resolution with headroom intact.

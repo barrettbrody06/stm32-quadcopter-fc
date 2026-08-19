@@ -49,6 +49,36 @@
 				(justify left top)
 			)
 		)
+		(pin "+5V" input
+			(at 190.5 21.59 180)
+			(uuid "beb0ade2-d8bb-407b-af9f-5bf1c7bf6b87")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RX_TX" bidirectional
+			(at 190.5 24.13 180)
+			(uuid "9f98d635-b3af-45e5-a577-5f9edd02cc0c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RX_RX" bidirectional
+			(at 190.5 26.67 180)
+			(uuid "e0284336-6387-43c5-a593-529420e85ab4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "fc-board"
 				(path "/953cb3c2-4b9e-42b9-907c-fb15c6a3ba2f"
@@ -395,6 +425,46 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "MOTOR1" bidirectional
+			(at 83.82 135.89 180)
+			(uuid "93db93c4-4c02-40bf-a028-fbb3ad4005aa")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MOTOR2" bidirectional
+			(at 83.82 138.43 180)
+			(uuid "f04f043d-264f-4458-a83e-e1df075156f1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MOTOR3" bidirectional
+			(at 83.82 140.97 180)
+			(uuid "a2420f4e-63d3-4cad-a135-510fcd2a4225")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MOTOR4" bidirectional
+			(at 83.82 143.51 180)
+			(uuid "09006bc6-79e2-4565-a627-3bcda8cacc91")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
@@ -890,6 +960,286 @@
 			(justify left bottom)
 		)
 		(uuid "41a5be94-d461-409d-a7ff-2112e7fc788a")
+	)
+	(wire
+		(pts
+			(xy 83.82 135.89) (xy 81.28 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fbeed9c-0084-4880-ac9e-ad94f850cc07")
+	)
+	(label "MOTOR1"
+		(at 81.28 135.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "01712e30-0e85-4865-acca-256ab3675d14")
+	)
+	(wire
+		(pts
+			(xy 83.82 138.43) (xy 81.28 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d5ec526-3b93-48f5-a841-7d10122cb12f")
+	)
+	(label "MOTOR2"
+		(at 81.28 138.43 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2961d215-88a5-41d2-a743-07cd381d2d0d")
+	)
+	(wire
+		(pts
+			(xy 83.82 140.97) (xy 81.28 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "616863d1-dca8-4aeb-aeb4-a83390923207")
+	)
+	(label "MOTOR3"
+		(at 81.28 140.97 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a45803f2-6100-491b-a25d-71e9f2cdd5e3")
+	)
+	(wire
+		(pts
+			(xy 83.82 143.51) (xy 81.28 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "daea0777-66b8-4b49-a505-aed7c8a42fdc")
+	)
+	(label "MOTOR4"
+		(at 81.28 143.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8832f61e-6167-4f92-a92f-18cb71c7b54e")
+	)
+	(wire
+		(pts
+			(xy 190.5 21.59) (xy 187.96 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65bfdfa7-97f7-4921-a342-1f804b055780")
+	)
+	(label "+5V"
+		(at 187.96 21.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8b3cd85a-9565-4580-a151-9a5f32d47f2f")
+	)
+	(wire
+		(pts
+			(xy 190.5 24.13) (xy 187.96 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca5ca21b-b610-44b6-a6fd-7e3dbb0ae634")
+	)
+	(label "RX_TX"
+		(at 187.96 24.13 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7c5db8d4-cca2-44ff-a95b-07ef4023b79a")
+	)
+	(wire
+		(pts
+			(xy 190.5 26.67) (xy 187.96 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "509a5f5b-2b90-4d94-aa07-e45d1c25b868")
+	)
+	(label "RX_RX"
+		(at 187.96 26.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ae01853a-9d9e-474d-ad6f-ae03293f22f3")
+	)
+	(wire
+		(pts
+			(xy 184.15 105.41) (xy 191.77 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9d31fe6-5cd4-4042-aca9-96745085644a")
+	)
+	(label "RX_TX"
+		(at 191.77 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "51d179f2-90ce-46f8-ae92-e6966fab4317")
+	)
+	(wire
+		(pts
+			(xy 184.15 107.95) (xy 191.77 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3313cb75-7d7b-48b0-a3e6-160486f365b4")
+	)
+	(label "RX_RX"
+		(at 191.77 107.95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3cc62857-cad5-46ef-acfc-28edb96b5721")
+	)
+	(wire
+		(pts
+			(xy 184.15 110.49) (xy 191.77 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4608b0d7-2805-47c2-aeb9-5672f0737f90")
+	)
+	(label "MOTOR1"
+		(at 191.77 110.49 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "89f07f80-b06e-4138-a201-a0124dca003e")
+	)
+	(wire
+		(pts
+			(xy 184.15 113.03) (xy 191.77 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ab2d00b-69a1-4dbf-a3ad-d942d9ec4c27")
+	)
+	(label "MOTOR2"
+		(at 191.77 113.03 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bfde7178-91ef-4228-a086-c0d2829ac6b4")
+	)
+	(wire
+		(pts
+			(xy 184.15 115.57) (xy 191.77 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af06aaf1-8fb2-42d1-a2e2-bb52909ef658")
+	)
+	(label "MOTOR3"
+		(at 191.77 115.57 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5aa98275-88c3-4513-a9db-cf9a720b4317")
+	)
+	(wire
+		(pts
+			(xy 184.15 118.11) (xy 191.77 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8939e074-e1b7-4f0d-a289-d0862e27952a")
+	)
+	(label "MOTOR4"
+		(at 191.77 118.11 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "97480c9e-6c56-422c-ae5c-4b917ecc1e39")
+	)
+	(wire
+		(pts
+			(xy 15.24 21.59) (xy 12.7 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a62e694-8d0c-4993-a152-ce2dce7ee29a")
+	)
+	(label "+5V"
+		(at 12.7 21.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cc291b25-d734-4a40-a165-f2fd0b9a4646")
 	)
 	(sheet_instances
 		(path "/"
