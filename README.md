@@ -10,18 +10,22 @@ The goal is not to build a better flight controller than the ones you can buy fo
 
 | Stage | State |
 |---|---|
-| Schematic | **Complete** — 5 hierarchical sheets, ERC clean but for one deliberate export |
+| Schematic | **Complete** — 5 hierarchical sheets, ERC clean (0 violations) |
 | PCB layout | **In progress** |
 | Fabrication | Not started |
 | Firmware | Not started |
 
-*Last updated: 2026-08-21*
+*Last updated: 2026-08-24*
 
 ---
 
 ## Hardware
 
 Board designation `fc-board`. KiCad 10.0, hierarchical schematic across five sheets.
+
+Footprints resolve from stock KiCad libraries and the project's own
+`hardware/lib/fc-board.pretty` — a fresh clone needs no third-party library
+installed.
 
 | Sheet | Contents |
 |---|---|
