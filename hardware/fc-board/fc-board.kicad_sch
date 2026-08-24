@@ -361,16 +361,6 @@
 				(justify left)
 			)
 		)
-		(pin "VBATT" input
-			(at 15.24 24.13 180)
-			(uuid "8f599dd9-4cfb-405d-819e-1fb8db908b4d")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "VBAT_SENSE" input
 			(at 15.24 31.75 180)
 			(uuid "cb069b6b-7134-44c9-b1a1-23469e613a56")

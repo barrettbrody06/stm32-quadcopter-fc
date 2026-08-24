@@ -4156,8 +4156,7 @@
 		)
 		(uuid "c2e06692-c959-42ce-bf45-1bec77a3ceee")
 	)
-	(hierarchical_label "VBATT"
-		(shape input)
+	(label "VBATT"
 		(at 118.11 138.43 90)
 		(effects
 			(font
@@ -4178,8 +4177,7 @@
 		)
 		(uuid "29881fdf-72d7-4c8f-a9c2-ea973da2a6fc")
 	)
-	(hierarchical_label "VBATT"
-		(shape input)
+	(label "VBATT"
 		(at 21.59 24.13 90)
 		(effects
 			(font
@@ -5075,7 +5073,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 126.238 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -5166,7 +5164,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 181.61 118.618 0)
 			(hide yes)
 			(show_name no)
@@ -5337,7 +5335,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 178.562 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -5627,7 +5625,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 76.962 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -6111,7 +6109,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 181.61 128.778 0)
 			(hide yes)
 			(show_name no)
@@ -7146,7 +7144,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 131.572 0)
 			(hide yes)
 			(show_name no)
@@ -7584,7 +7582,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "SparkFun-Resistor:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 131.572 52.07 0)
 			(hide yes)
 			(show_name no)
