@@ -1,37 +1,82 @@
-# VS Code
-.history/
-.vscode/
-
-# KiCad - user/local state
-*.kicad_prl
-fp-info-cache
-
-# KiCad - backups and autosaves
+# ---- KiCad ----
+# Backups and autosave
 *-backups/
+*.kicad_prl
+_autosave-*
 *.kicad_sch-bak
 *.kicad_pcb-bak
 *.kicad_pro-bak
-_autosave-*
-*.lck
-~*.lck
 *.bak
 *.bck
-*.tmp
 *.000
+*.tmp
+fp-info-cache
 
-# KiCad - generated outputs
+# KiCad editor lock files (present only while a file is open)
+*.lck
+~*.lck
+
+# Netlists and intermediate outputs
 *.net
 *.xml
-*.drl
+*.cmp
+
+# Generated fabrication output (regenerate from source; keep releases as tags)
+gerbers/
 *.gbr
 *.gbrjob
-gerbers/
+*.drl
+*.ps
+*.dsn
+*.ses
 
-# Python
+# Simulation
+*.raw
+*.sim
+
+# ---- Firmware (STM32 / CubeMX / gcc) ----
+build/
+Debug/
+Release/
+*.o
+*.d
+*.su
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.lst
+
+# CubeMX / CubeIDE workspace noise
+.metadata/
+.settings/
+*.launch
+Drivers/CMSIS/docs/
+
+# ---- Python (BOM/util scripts) ----
 __pycache__/
 *.pyc
 
-# OS
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.history/
 Thumbs.db
 desktop.ini
 .DS_Store
+*.swp
+*~
+
+# ---- IMPORTANT: never ignore these ----
+# Source of truth. Negations here defend against a stray broad pattern above.
+!*.kicad_sch
+!*.kicad_pcb
+!*.kicad_pro
+!*.ioc
+!*.step
+!*.kicad_sym
+!*.kicad_mod
+!*.kicad_dru
+!fp-lib-table
+!sym-lib-table
