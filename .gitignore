@@ -80,3 +80,6 @@ desktop.ini
 !*.kicad_dru
 !fp-lib-table
 !sym-lib-table
+
+# Vendor datasheets - linked from docs/datasheets/README.md, not redistributed
+docs/datasheets/*.pdf

@@ -218,8 +218,6 @@ Set these in Board Setup *before* routing, not after.
 
 ## 10. Open questions before starting
 
-- **`VBATT` hierarchical label** still exported with no consumer — delete it or
-  keep it deliberately (see `parts.md`).
 - **VBAT sense divider** is 10k/1k, using 35% of the ADC range. 10k/3.3k gives
   ~3x resolution. Change it before layout, not after.
 - **Board outline shape** — plain 50 mm square, or corners clipped for arm
